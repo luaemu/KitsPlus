@@ -1,0 +1,3 @@
+# KitsPlus Config v1.0
+permission-message: "&4You do not have permissions!" # message sent to the player when they do not have permissions to run a command
+chat-prefix: "&e[Kits] " # any messages sent to a player will have this prefixed before them (spaces arent added, add them manually here)

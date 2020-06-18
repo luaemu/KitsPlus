@@ -1,0 +1,10 @@
+me/local/kitsplus/nbt/NbtWrapper.class
+me/local/kitsplus/kit/KitsManager$1.class
+me/local/kitsplus/commands/KitCommand.class
+me/local/kitsplus/kit/KitsGuiManager.class
+me/local/kitsplus/commands/TestItem.class
+me/local/kitsplus/kit/KitsManager.class
+me/local/kitsplus/listeners/GuiOptionSelectEvent.class
+me/local/kitsplus/KitsPlus.class
+me/local/kitsplus/kit/KitsCooldownManager.class
+me/local/kitsplus/commands/TestKitString.class

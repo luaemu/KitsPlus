@@ -1,0 +1,18 @@
+name: KitsPlus
+version: ${project.version}
+main: me.local.kitsplus.KitsPlus
+api-version: 1.13
+authors: [XueHuaPiaoPiao]
+description: Kit plugin for PhaseCraft
+commands:
+  kit:
+    description: The main command for KitsPlus.
+    usage: /<command>
+    aliases: [kits]
+    permission: kitsplus.commands.kit
+  teststring:
+    # REMOVE THIS
+    description: testing command for string serialization of itemstacks
+  testitem:
+    # REMOVE THIS
+    description: testing command for deserialization of itemstacks (pls work)

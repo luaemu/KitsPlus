@@ -1,0 +1,19 @@
+# KITS.YML FILE FOR KITSPLUS v1.0
+# Be sure you know what you are doing when you edit this file.
+# KITS ARE STORED HERE, DO NOT REMOVE THIS FILE UNLESS YOU WANT TO LOSE ALL OF YOUR KITS
+kits:
+  # a small example kit to demonstrate kit formatting
+  example-kit: # name of the kit, this is run as /kit <name> as an alternative to the GUI, and is shown like this in the kit list.
+    name-formatted: "&dExample Kit" # The name the kit will show as in the kits menu
+    potion-effect: INVISIBILITY # Potion effect granted upon the kit being redeemed
+    amplifier: 1
+    kit-icon: IRON_SWORD # the item that shows as the name of the kit
+    description: "&bAn example kit" # The description of the kit. Shows as lore on the icon in the GUI
+    cooldown: 15 # Cooldown before the kit can be redeemed again, in seconds
+    contents: # The items the kit contains
+      - iron_sword 1 0 sharpness 2
+      - golden_apple 5 0
+      - chainmail_helmet 1 0
+      - iron_chestplate 1 0
+      - iron_leggings 1 0
+      - chainmail_boots 1 0
