@@ -21,14 +21,17 @@ import java.util.concurrent.TimeUnit;
 public class KitsManager {
     private static KitsCooldownManager cooldownManager = new KitsCooldownManager();
 
+    public static KitsCooldownManager getCooldownManager() {
+        return cooldownManager;
+    }
+
     public static void giveKitToPlayer(Player player, String kitName) {
         if (KitsPlus.getInstance().getKitsConfig().getConfigurationSection("kits." + kitName) != null) {
             long timeLeft = System.currentTimeMillis() - cooldownManager.getCooldown(player, kitName);
             int cooldown = KitsPlus.getInstance().getKitsConfig().getInt("kits."+kitName+".cooldown");
-            if (TimeUnit.MILLISECONDS.toSeconds(timeLeft) >= cooldown) {
+            if (TimeUnit.MILLISECONDS.toSeconds(timeLeft) >= cooldown || cooldownManager.isBypassed(player)) {
                 String effect = KitsPlus.getInstance().getKitsConfig().getConfigurationSection("kits." + kitName).getString("potion-effect");
                 int amplifier = KitsPlus.getInstance().getKitsConfig().getConfigurationSection("kits." + kitName).getInt("amplifier");
-                System.out.println("effect = " + effect);
                 Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(KitsPlus.getInstance(), new Runnable()
                 {
                     public void run()
@@ -41,7 +44,6 @@ public class KitsManager {
                 KitsPlus.getInstance().getKitsConfig().getConfigurationSection("kits." + kitName).getStringList("contents").forEach(e -> kitItems.add(KitsManager.getItemStackFromString(e)));
                 player.getInventory().clear();
                 player.getActivePotionEffects().forEach(e -> player.removePotionEffect(e.getType()));
-                kitItems.forEach(System.out::println);
                 kitItems.forEach(player.getInventory()::addItem);
                 player.sendMessage(ChatColor.GREEN + "You have successfully redeemed this kit!");
                 cooldownManager.setCooldown(player, kitName, System.currentTimeMillis());

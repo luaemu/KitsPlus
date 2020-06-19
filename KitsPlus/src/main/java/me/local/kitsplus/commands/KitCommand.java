@@ -1,5 +1,7 @@
 package me.local.kitsplus.commands;
 
+import me.local.kitsplus.KitsPlus;
+import me.local.kitsplus.kit.KitsCooldownManager;
 import me.local.kitsplus.kit.KitsGuiManager;
 import me.local.kitsplus.kit.KitsManager;
 import org.bukkit.ChatColor;
@@ -15,7 +17,20 @@ public class KitCommand implements CommandExecutor {
             if (args.length == 0) {
                 KitsGuiManager.updateGui();
                 KitsGuiManager.openGui(((Player) sender));
-                System.out.println("OPEN GUI");
+            } else {
+                if ("reload".equalsIgnoreCase(args[0])) {
+                    if (sender.hasPermission("kitsplus.admin")) {
+                        KitsPlus.getInstance().reloadConfig();
+                    } else {
+                        sender.sendMessage(KitsPlus.getInstance().getConfig().getString("permission-message"));
+                    }
+                } else if ("bypass".equalsIgnoreCase(args[0])) {
+                    if (sender.hasPermission("kitsplus.admin") || sender.hasPermission("kitsplus.bypass")) {
+                        KitsManager.getCooldownManager().toggleBypassed(((Player) sender));
+                    } else {
+
+                    }
+                }
             }
         }
         return true;

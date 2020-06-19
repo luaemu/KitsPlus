@@ -36,16 +36,15 @@ public class KitsGuiManager {
     }
 
     public static void updateGui() {
+        kitChoices.removeAll(kitChoices);
         FileConfiguration kitsConfig = KitsPlus.getInstance().getKitsConfig();
         ConfigurationSection section = kitsConfig.getConfigurationSection("kits");
         section.getKeys(false).forEach((key) -> {
             String iconItem = section.getString(key + ".kit-icon");
-            System.out.println("ICON PATH:" + iconItem);
             String iconLore = section.getString(key+".description");
             String iconName = section.getString(key+".name-formatted");
             ItemStack kitIcon = new ItemStack(Material.matchMaterial(iconItem));
             kitIcon = KitsPlus.getNbtWrapper().setNBTTag("kitName", key, kitIcon);
-            System.out.println("HAS META: "+kitIcon.hasItemMeta());
             ItemMeta meta = kitIcon.getItemMeta();
             meta.setLore(Collections.singletonList(ChatColor.translateAlternateColorCodes('&',iconLore)));
             meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', iconName));

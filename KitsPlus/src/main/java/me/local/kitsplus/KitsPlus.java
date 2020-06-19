@@ -31,6 +31,10 @@ public final class KitsPlus extends JavaPlugin {
         instance = this;
     }
 
+    public void reloadConfig() {
+        kitsConfig = YamlConfiguration.loadConfiguration(kitsFile);
+    }
+
     private void createKitsConfig() {
         kitsFile = new File(getDataFolder(), "kits.yml");
         if (!(kitsFile.exists())) {

@@ -18,7 +18,6 @@ public class TestItem implements CommandExecutor {
                 for (int i = 0; i < args.length; i++) {
                     builder.append(args[i]).append(" ");
                 }
-                System.out.println(builder.toString());
                 ItemStack stack = KitsManager.getItemStackFromString(builder.toString());
                 Player p = ((Player) sender);
                 p.getInventory().addItem(stack);
